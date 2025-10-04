@@ -24,6 +24,7 @@ import Hotlines from './pages/philippines/Hotlines';
 import VisaPage from './pages/travel/visa';
 import VisaTypesPage from './pages/travel/visa-types';
 import VisaTypeDetail from './pages/travel/visa-types/[type]';
+import CommunicatingPage from './pages/travel/communicating';
 import ExecutiveDirectory from './pages/government/executive';
 import ExecutiveLayout from './pages/government/executive/layout';
 import DepartmentsIndex from './pages/government/departments';
@@ -163,6 +164,7 @@ function App() {
                   </React.Suspense>
                 }
               />
+              <Route path='communicating' element={<CommunicatingPage />} />
             </Route>
 
             {/* Government Routes */}
