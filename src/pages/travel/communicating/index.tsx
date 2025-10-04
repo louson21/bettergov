@@ -10,9 +10,11 @@ import {
   Hash,
   Printer,
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { phrasesData } from './phrasesData';
 
 const CommunicatingPage: React.FC = () => {
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [selectedLanguage, setSelectedLanguage] = useState<
     'chinese' | 'korean' | 'japanese'
@@ -51,6 +53,19 @@ const CommunicatingPage: React.FC = () => {
       {/* Hero Section */}
       <div className='bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16 px-4 print:bg-white print:text-gray-900 print:py-4'>
         <div className='container mx-auto max-w-7xl'>
+          {/* Print/Save Button - Top Right */}
+          <div className='flex justify-end mb-4 print:hidden'>
+            <button
+              onClick={() =>
+                navigate(`/travel/communicating/print?lang=${selectedLanguage}`)
+              }
+              className='flex items-center gap-2 px-4 py-2 bg-white text-blue-700 rounded-lg font-medium hover:bg-blue-50 transition-colors shadow-md text-sm'
+            >
+              <Printer className='h-4 w-4' />
+              Print Version
+            </button>
+          </div>
+
           <div className='text-center'>
             <div className='flex justify-center mb-4'>
               <div className='bg-white/20 backdrop-blur-sm p-4 rounded-full'>
@@ -86,14 +101,6 @@ const CommunicatingPage: React.FC = () => {
                 <option value='korean'>한국어 Korean</option>
                 <option value='japanese'>日本語 Japanese</option>
               </select>
-
-              <button
-                onClick={() => window.print()}
-                className='flex items-center gap-2 px-6 py-3 bg-white text-blue-700 rounded-lg font-medium hover:bg-blue-50 transition-colors shadow-md'
-              >
-                <Printer className='h-5 w-5' />
-                Print / Save
-              </button>
             </div>
 
             {/* Print-only language indicator */}

@@ -25,6 +25,7 @@ import VisaPage from './pages/travel/visa';
 import VisaTypesPage from './pages/travel/visa-types';
 import VisaTypeDetail from './pages/travel/visa-types/[type]';
 import CommunicatingPage from './pages/travel/communicating';
+import CommunicatingPrintPage from './pages/travel/communicating/print';
 import ExecutiveDirectory from './pages/government/executive';
 import ExecutiveLayout from './pages/government/executive/layout';
 import DepartmentsIndex from './pages/government/departments';
@@ -165,6 +166,10 @@ function App() {
                 }
               />
               <Route path='communicating' element={<CommunicatingPage />} />
+              <Route
+                path='communicating/print'
+                element={<CommunicatingPrintPage />}
+              />
             </Route>
 
             {/* Government Routes */}
