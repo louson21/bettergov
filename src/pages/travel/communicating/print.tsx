@@ -5,8 +5,8 @@ import { phrasesData } from './phrasesData';
 const CommunicatingPrintPage: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [selectedLanguage, setSelectedLanguage] = useState<
-    'chinese' | 'korean' | 'japanese'
-  >('chinese');
+    'english' | 'chinese' | 'korean' | 'japanese'
+  >('english');
 
   useEffect(() => {
     const lang = searchParams.get('lang') as 'chinese' | 'korean' | 'japanese';
@@ -17,6 +17,8 @@ const CommunicatingPrintPage: React.FC = () => {
 
   const getLanguageLabel = () => {
     switch (selectedLanguage) {
+      case 'english':
+        return 'English';
       case 'chinese':
         return '中文 Chinese';
       case 'korean':
@@ -96,11 +98,16 @@ const CommunicatingPrintPage: React.FC = () => {
                 value={selectedLanguage}
                 onChange={e =>
                   setSelectedLanguage(
-                    e.target.value as 'chinese' | 'korean' | 'japanese'
+                    e.target.value as
+                      | 'english'
+                      | 'chinese'
+                      | 'korean'
+                      | 'japanese'
                   )
                 }
                 className='px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white cursor-pointer'
               >
+                <option value='english'>English</option>
                 <option value='chinese'>中文 Chinese</option>
                 <option value='korean'>한국어 Korean</option>
                 <option value='japanese'>日本語 Japanese</option>
@@ -138,17 +145,25 @@ const CommunicatingPrintPage: React.FC = () => {
               <table className='w-full text-sm print:text-xs'>
                 <thead>
                   <tr className='bg-gray-100 border-b border-gray-300'>
-                    <th className='px-2 py-1.5 print:py-1 text-left font-semibold text-gray-700 w-1/4'>
+                    <th
+                      className={`px-2 py-1.5 print:py-1 text-left font-semibold text-gray-700 ${selectedLanguage === 'english' ? 'w-1/3' : 'w-1/4'}`}
+                    >
                       {getLanguageLabel()}
                     </th>
-                    <th className='px-2 py-1.5 print:py-1 text-left font-semibold text-gray-700 w-1/4'>
-                      English
-                    </th>
-                    <th className='px-2 py-1.5 print:py-1 text-left font-semibold text-gray-700 w-1/4'>
+                    {selectedLanguage !== 'english' && (
+                      <th className='px-2 py-1.5 print:py-1 text-left font-semibold text-gray-700 w-1/4'>
+                        Ingles
+                      </th>
+                    )}
+                    <th
+                      className={`px-2 py-1.5 print:py-1 text-left font-semibold text-gray-700 ${selectedLanguage === 'english' ? 'w-1/3' : 'w-1/4'}`}
+                    >
                       Tagalog
                     </th>
-                    <th className='px-2 py-1.5 print:py-1 text-left font-semibold text-gray-700 w-1/4'>
-                      Visaya
+                    <th
+                      className={`px-2 py-1.5 print:py-1 text-left font-semibold text-gray-700 ${selectedLanguage === 'english' ? 'w-1/3' : 'w-1/4'}`}
+                    >
+                      Bisaya
                     </th>
                   </tr>
                 </thead>
@@ -159,13 +174,16 @@ const CommunicatingPrintPage: React.FC = () => {
                       className='border-b border-gray-200 last:border-b-0'
                     >
                       <td className='px-2 py-1.5 print:py-1 text-gray-800'>
+                        {selectedLanguage === 'english' && phrase.english}
                         {selectedLanguage === 'chinese' && phrase.chinese}
                         {selectedLanguage === 'korean' && phrase.korean}
                         {selectedLanguage === 'japanese' && phrase.japanese}
                       </td>
-                      <td className='px-2 py-1.5 print:py-1 text-gray-900 font-medium'>
-                        {phrase.english}
-                      </td>
+                      {selectedLanguage !== 'english' && (
+                        <td className='px-2 py-1.5 print:py-1 text-gray-900 font-medium'>
+                          {phrase.english}
+                        </td>
+                      )}
                       <td className='px-2 py-1.5 print:py-1 text-gray-800'>
                         {phrase.tagalog}
                       </td>

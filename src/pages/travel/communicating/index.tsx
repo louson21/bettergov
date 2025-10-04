@@ -17,8 +17,8 @@ const CommunicatingPage: React.FC = () => {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [selectedLanguage, setSelectedLanguage] = useState<
-    'chinese' | 'korean' | 'japanese'
-  >('chinese');
+    'english' | 'chinese' | 'korean' | 'japanese'
+  >('english');
 
   const categoryIcons: Record<string, React.ReactNode> = {
     Greetings: <MessageCircle className='h-5 w-5' />,
@@ -92,11 +92,16 @@ const CommunicatingPage: React.FC = () => {
                 value={selectedLanguage}
                 onChange={e =>
                   setSelectedLanguage(
-                    e.target.value as 'chinese' | 'korean' | 'japanese'
+                    e.target.value as
+                      | 'english'
+                      | 'chinese'
+                      | 'korean'
+                      | 'japanese'
                   )
                 }
                 className='px-6 py-3 border-2 border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-lg bg-blue-700 text-white cursor-pointer font-medium hover:bg-blue-800 transition-colors'
               >
+                <option value='english'>English</option>
                 <option value='chinese'>中文 Chinese</option>
                 <option value='korean'>한국어 Korean</option>
                 <option value='japanese'>日本語 Japanese</option>
@@ -106,10 +111,11 @@ const CommunicatingPage: React.FC = () => {
             {/* Print-only language indicator */}
             <div className='hidden print:block text-center mt-4'>
               <p className='text-lg font-semibold'>
-                Language: {selectedLanguage === 'chinese' && '中文 Chinese'}
+                Language: {selectedLanguage === 'english' && 'English'}
+                {selectedLanguage === 'chinese' && '中文 Chinese'}
                 {selectedLanguage === 'korean' && '한국어 Korean'}
-                {selectedLanguage === 'japanese' && '日本語 Japanese'} • English
-                • Tagalog • Visaya
+                {selectedLanguage === 'japanese' && '日本語 Japanese'} • Tagalog
+                • Visaya
               </p>
             </div>
           </div>
@@ -157,25 +163,33 @@ const CommunicatingPage: React.FC = () => {
                       </h2>
                     </div>
                   </div>
-                  {/* Phrases Table */}
                   <div className='overflow-x-auto'>
                     <table className='w-full'>
                       <thead>
                         <tr className='bg-gray-100 border-b-2 border-gray-200'>
-                          <th className='px-4 py-3 text-left font-semibold text-gray-700 text-sm md:text-base w-1/4'>
+                          <th
+                            className={`px-4 py-3 text-left font-semibold text-gray-700 text-sm md:text-base ${selectedLanguage === 'english' ? 'w-1/3' : 'w-1/4'}`}
+                          >
+                            {selectedLanguage === 'english' && 'English'}
                             {selectedLanguage === 'chinese' && '中文 Chinese'}
                             {selectedLanguage === 'korean' && '한국어 Korean'}
                             {selectedLanguage === 'japanese' &&
                               '日本語 Japanese'}
                           </th>
-                          <th className='px-4 py-3 text-left font-semibold text-blue-900 bg-blue-50 text-sm md:text-base w-1/4'>
-                            English
-                          </th>
-                          <th className='px-4 py-3 text-left font-semibold text-blue-900 bg-blue-50 text-sm md:text-base w-1/4'>
+                          {selectedLanguage !== 'english' && (
+                            <th className='px-4 py-3 text-left font-semibold text-blue-900 bg-blue-50 text-sm md:text-base w-1/4'>
+                              Ingles
+                            </th>
+                          )}
+                          <th
+                            className={`px-4 py-3 text-left font-semibold text-blue-900 bg-blue-50 text-sm md:text-base ${selectedLanguage === 'english' ? 'w-1/3' : 'w-1/4'}`}
+                          >
                             Tagalog
                           </th>
-                          <th className='px-4 py-3 text-left font-semibold text-blue-900 bg-blue-50 text-sm md:text-base w-1/4'>
-                            Visaya
+                          <th
+                            className={`px-4 py-3 text-left font-semibold text-blue-900 bg-blue-50 text-sm md:text-base ${selectedLanguage === 'english' ? 'w-1/3' : 'w-1/4'}`}
+                          >
+                            Bisaya
                           </th>
                         </tr>
                       </thead>
@@ -190,15 +204,19 @@ const CommunicatingPage: React.FC = () => {
                               className='border-b border-gray-200 hover:bg-blue-50 transition-colors print:break-inside-avoid'
                             >
                               <td className='px-4 py-4 text-gray-800 text-sm md:text-base'>
+                                {selectedLanguage === 'english' &&
+                                  phrase.english}
                                 {selectedLanguage === 'chinese' &&
                                   phrase.chinese}
                                 {selectedLanguage === 'korean' && phrase.korean}
                                 {selectedLanguage === 'japanese' &&
                                   phrase.japanese}
                               </td>
-                              <td className='px-4 py-4 text-gray-900 font-medium text-sm md:text-base bg-blue-50/30'>
-                                {phrase.english}
-                              </td>
+                              {selectedLanguage !== 'english' && (
+                                <td className='px-4 py-4 text-gray-900 font-medium text-sm md:text-base bg-blue-50/30'>
+                                  {phrase.english}
+                                </td>
+                              )}
                               <td className='px-4 py-4 text-gray-800 text-sm md:text-base bg-blue-50/30'>
                                 {phrase.tagalog}
                               </td>
