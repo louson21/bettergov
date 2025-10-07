@@ -25,6 +25,8 @@ export const mainNavigation: NavigationItem[] = [
       // { label: 'Tourism', href: '/philippines/tourism' },
       { label: 'Hotlines', href: '/philippines/hotlines' },
       { label: 'Holidays', href: '/philippines/holidays' },
+      { label: 'Forex', href: '/data/forex' },
+      { label: 'Weather', href: '/data/weather' },
     ],
   },
   {
@@ -67,6 +69,41 @@ export const mainNavigation: NavigationItem[] = [
       { label: 'Table', href: '/flood-control-projects/table' },
       { label: 'Map', href: '/flood-control-projects/map' },
       { label: 'Contractors', href: '/flood-control-projects/contractors' },
+    ],
+  },
+  {
+    label: 'Our Projects',
+    href: '#',
+    children: [
+      {
+        label: 'Budget Tracker',
+        href: 'https://budget.bettergov.ph',
+        target: '_blank',
+      },
+      {
+        label: 'Petitions',
+        href: 'https://petition.ph',
+        target: '_blank',
+      },
+      {
+        label: 'Tax Directory',
+        href: 'https://taxdirectory.bettergov.ph',
+        target: '_blank',
+      },
+      {
+        label: 'SALN Tracker',
+        href: 'https://saln.bettergov.ph',
+        target: '_blank',
+      },
+      {
+        label: 'Hotlines',
+        href: 'https://hotlines.bettergov.ph',
+        target: '_blank',
+      },
+      {
+        label: 'Data APIs',
+        href: 'https://bettergov.ph/data',
+      },
     ],
   },
 ];
