@@ -12,6 +12,50 @@ interface Category {
   subcategories: Subcategory[];
 }
 
+export const ourProjects = [
+  {
+    label: 'Our Projects',
+    href: '#',
+    children: [
+      {
+        label: 'Budget Tracker',
+        href: 'https://budget.bettergov.ph',
+        target: '_blank',
+      },
+      {
+        label: 'Petitions',
+        href: 'https://petition.ph',
+        target: '_blank',
+      },
+      {
+        label: 'Tax Directory',
+        href: 'https://taxdirectory.bettergov.ph',
+        target: '_blank',
+      },
+      {
+        label: 'SALN Tracker',
+        href: 'https://saln.bettergov.ph',
+        target: '_blank',
+      },
+      {
+        label: 'Hotlines',
+        href: 'https://hotlines.bettergov.ph',
+        target: '_blank',
+      },
+      {
+        label: 'Open Bayan',
+        href: 'https://www.openbayan.org',
+        target: '_blank',
+      },
+      {
+        label: 'Open Congress API',
+        href: 'https://open-congress-api.bettergov.ph',
+        target: '_blank',
+      },
+    ],
+  },
+];
+
 export const mainNavigation: NavigationItem[] = [
   {
     label: 'Philippines',
@@ -71,41 +115,7 @@ export const mainNavigation: NavigationItem[] = [
       { label: 'Contractors', href: '/flood-control-projects/contractors' },
     ],
   },
-  {
-    label: 'Our Projects',
-    href: '#',
-    children: [
-      {
-        label: 'Budget Tracker',
-        href: 'https://budget.bettergov.ph',
-        target: '_blank',
-      },
-      {
-        label: 'Petitions',
-        href: 'https://petition.ph',
-        target: '_blank',
-      },
-      {
-        label: 'Tax Directory',
-        href: 'https://taxdirectory.bettergov.ph',
-        target: '_blank',
-      },
-      {
-        label: 'SALN Tracker',
-        href: 'https://saln.bettergov.ph',
-        target: '_blank',
-      },
-      {
-        label: 'Hotlines',
-        href: 'https://hotlines.bettergov.ph',
-        target: '_blank',
-      },
-      {
-        label: 'Data APIs',
-        href: 'https://bettergov.ph/data',
-      },
-    ],
-  },
+  ...ourProjects,
 ];
 
 export const footerNavigation = {
@@ -133,6 +143,10 @@ export const footerNavigation = {
         { label: 'Holidays', href: '/philippines/holidays' },
         { label: 'Flood Control Projects', href: '/flood-control-projects' },
       ],
+    },
+    {
+      title: 'Our Projects',
+      links: ourProjects[0].children,
     },
     {
       title: 'Government',

@@ -79,7 +79,7 @@ const Navbar: FC = () => {
               to='/about'
               className='text-xs leading-12 text-gray-800 hover:text-primary-600 transition-colors'
             >
-              About BetterGov.ph
+              About <span className='hidden md:inline'>BetterGov.ph</span>
             </Link>
             <a
               href='https://www.gov.ph'
