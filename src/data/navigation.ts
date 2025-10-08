@@ -52,6 +52,11 @@ export const ourProjects = [
         href: 'https://open-congress-api.bettergov.ph',
         target: '_blank',
       },
+      {
+        label: 'OpenGov Blockchain',
+        href: 'https://govchain.bettergov.ph',
+        target: '_blank',
+      },
     ],
   },
 ];
