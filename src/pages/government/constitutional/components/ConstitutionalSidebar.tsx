@@ -76,6 +76,7 @@ export default function ConstitutionalSidebar({
               {filteredOffices.map(office => (
                 <li key={office.name}>
                   <button
+                    title={office.name}
                     onClick={() => handleOfficeSelect(office)}
                     className={`w-full text-left px-3 py-2 text-sm rounded-md transition-colors cursor-pointer ${
                       officeParam === office.slug

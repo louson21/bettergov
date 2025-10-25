@@ -55,6 +55,7 @@ export default function DepartmentsSidebar({
               .map(dept => (
                 <li key={dept.slug}>
                   <button
+                    title={dept.office_name.replace('DEPARTMENT OF ', '')}
                     onClick={() => handleDeptSelect(dept)}
                     className={`w-full text-left px-4 py-3 text-sm rounded-md transition-colors cursor-pointer ${
                       departmentParam === dept.slug
