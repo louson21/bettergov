@@ -60,12 +60,13 @@ export default function SUCsPage() {
             <p className='text-gray-800'>Try adjusting your search term.</p>
           </div>
         ) : (
+          
           filteredSUCs
             .sort((a, b) => a.name.localeCompare(b.name))
             .map(suc => (
               <div
                 key={suc.name}
-                className='bg-white rounded-lg border overflow-hidden'
+                className='bg-white rounded-lg border overflow-hidden flex flex-col h-full'
               >
                 <div className='p-4 border-b'>
                   <h3 className='font-semibold text-lg text-gray-900 line-clamp-2'>
@@ -73,7 +74,7 @@ export default function SUCsPage() {
                   </h3>
                 </div>
 
-                <div className='p-4 space-y-3'>
+                <div className='p-4 space-y-3 flex-1'>
                   {suc.address && (
                     <p className='text-sm text-gray-800 flex items-start'>
                       <MapPinIcon className='h-4 w-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0' />
@@ -144,7 +145,26 @@ export default function SUCsPage() {
                   </div>
                 )}
               </div>
-            ))
+
+              {suc.website && (
+                <div className='px-4 py-3 bg-gray-50 border-t mt-auto'>
+                  <a
+                    href={
+                      suc.website.startsWith('http')
+                        ? suc.website
+                        : `https://${suc.website}`
+                    }
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-sm text-primary-600 hover:text-primary-700 flex items-center'
+                  >
+                    <span>Visit website</span>
+                    <ExternalLinkIcon className='ml-1.5 h-3.5 w-3.5' />
+                  </a>
+                </div>
+              )}
+            </div>
+          ))
         )}
       </div>
     </div>
