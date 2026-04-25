@@ -1,7 +1,6 @@
 # BetterGov.ph
 
 ![GitHub Repo Banner](https://ghrb.waren.build/banner?header=BetterGov.ph&subheader=Building+a+better+Philippines%27+national+website&bg=0051BA&color=fff&support=true)
-<!-- Created with GitHub Repo Banner by Waren Gonzaga: https://ghrb.waren.build -->
 
 A community-led initiative to create a better and more usable Philippine national government website.
 
